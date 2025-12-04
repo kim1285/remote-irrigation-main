@@ -1,3 +1,8 @@
+
+<p align="center">
+  <a href="https://github.com/kim1285/remote-irrigation-main/blob/main/README_KOREAN.md">한국어도 있어요</a>
+</p>
+
 <h1 align="center">Remote Irrigation</h1>
 <p align="center">
   <img src="videoframe_3483.png" width="500"/>
