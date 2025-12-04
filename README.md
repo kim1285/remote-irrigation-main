@@ -37,5 +37,16 @@ All firmware, backend, frontend, is built from scratch, and the server is live o
 
 # Architecture
 <p align="center">
-  <img src=Untitled Diagram-Page-1.drawio.png width="500"/>
+  <img src="Untitled Diagram-Page-1.drawio.png" width="1500"/>
 </p>
+<p align="center">Overall High level architecture(C2)</p>
+
+There are three main parts:
+
+**Edge Devices** → ESP32 running MicroPython (Hub + Device Manager pattern)
+
+**Ubuntu VM ($7/month Vultr)** → FastAPI + Mosquitto + MySQL + Nginx
+
+**Frontend** → Standalone React Native Android app
+
+
