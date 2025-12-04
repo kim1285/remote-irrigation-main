@@ -9,7 +9,6 @@
 </p>
 <p align="center">─────────</p>
 <p align="center"><strong>A simple, reliable, IoT irrigation platform for farmers, without infrastructure overhaul</strong></p>
-
 <p align="center">─────────</p>
 
 # Features
@@ -21,8 +20,7 @@
 - 🔄 Fault-tolerant edge devices with automatic reconnection after power or network outages.
 
 
-
-# Demonstration Video
+# Demonstration Video / Live server
 <p align="center">
   <a href="https://www.youtube.com/shorts/RhWYphY1hrE" target="_blank" rel="noopener">
     <img src="vid-link-thumb.png" alt="Watch demo" width="330"/>
@@ -30,6 +28,8 @@
   <br>
   <em>Click the image to see the demo video.</em>
 </p>
+<p align="center"><a href="https://remote-irrigation.duckdns.org/docs#">Live server swagger doc</a></p>
+
 
 # Table of Contents
 
