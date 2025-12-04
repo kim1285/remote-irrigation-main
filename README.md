@@ -1,4 +1,6 @@
 # remote-irrigation-main
 Remote Irrigation system using FastAPI, MQTT, ESP32
-videoframe_3483.png
+<div style="text-align: center;">
+  <img src="videoframe_3483.png" />
+</div>
 
