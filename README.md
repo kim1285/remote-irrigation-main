@@ -2,10 +2,10 @@
 <p align="center">
   <img src="videoframe_3483.png" width="500"/>
 </p>
-<p align="center">─────────────────────────────────────────────────────</p>
-<p align="center"><strong>A simple, reliable, IoT irrigation platform for farmers without infrastructure overhaul</strong></p>
+<p align="center">─────────</p>
+<p align="center"><strong>A simple, reliable, IoT irrigation platform for farmers, without infrastructure overhaul</strong></p>
 
-<p align="center">─────────────────────────────────────────────────────</p>
+<p align="center">─────────</p>
 
 # Features
 
