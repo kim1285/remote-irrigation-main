@@ -15,8 +15,16 @@
 - 🔐 Secure communication using HTTPS and JWT-based authentication
 - 🔄 Fault-tolerant edge devices with automatic reconnection after power or network outages.
 
+
+
 # Demonstration Video
-[![Watch the video](https://img.youtube.com/vi/VIDEO_ID/hqdefault.jpg)](https://www.youtube.com/shorts/RhWYphY1hrE)
+<p align="center">
+  <a href="https://www.youtube.com/shorts/RhWYphY1hrE" target="_blank" rel="noopener">
+    <img src="vid-link-thumb.png" alt="Watch demo" width="330"/>
+  </a>
+  <br>
+  <em>Click the image to see the demo video.</em>
+</p>
 
 # Table of Contents
 
