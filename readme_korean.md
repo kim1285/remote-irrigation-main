@@ -48,7 +48,7 @@
 <p align="center">
   <img src="Untitled Diagram-Page-1.drawio.png" width="1500"/>
   <br>
-  <em>전체 고수준 아키텍처(C2)</em>
+  <em>전체 High-level 아키텍처(C2)</em>
 </p>
 
 세 가지 주요 구성 요소:
@@ -59,16 +59,16 @@
 ## 기술 스택
 | 구성 요소               | 선택 기술                                    | 선택 이유                                  |
 | ----------------------- | -------------------------------------------- | ----------------------------------------- |
-| 호스팅                  | Vultr $7/월 VM                               | 저렴하고 간단하며 안정적, 고정 공인 IP 제공 |
-| 리버스 프록시           | Nginx + Let’s Encrypt                        | HTTPS, 속도 제한                           |
-| 개방 포트               | 443 (HTTPS) + 8883 (MQTT/TLS)만 개방         | 보안성과 예측 가능성                        |
+| 호스팅(Hosting)                  | Vultr $7/월 VM                               | 저렴하고 간단하며 안정적, 고정 공인 IP 제공 |
+| 리버스 프록시(reverse Proxy)           | Nginx + Let’s Encrypt                        | HTTPS, 속도 제한                           |
+| 개방 포트(Open port)               | 443 (HTTPS) + 8883 (MQTT/TLS)만 개방         | 보안성과 예측 가능성                        |
 | 백엔드                  | FastAPI + async SQLAlchemy                   | 최신, 빠름, 비동기, 자동 문서 우수          |
 | 아키텍처                | 간소화된 DDD 계층 구조                        | 확장성 좋고 가독성 높음                     |
 | 데이터베이스            | MySQL                                        | 간단하고 async Python 지원 우수             |
 | 메시지 브로커           | Mosquitto MQTT                               | 가볍고 안정적, MicroPython 지원 뛰어남      |
 | 엣지 ↔ 클라우드 보안    | MQTT over TLS + username/pw + Private CA     | 보안성 높고 메모리 500KB에서도 동작         |
 | 클라이언트 ↔ 클라우드 보안 | JWT + HTTPS                                | 간단한 JWT 기반 인증                       |
-| 배포                    | systemd 서비스                                | 크래시 시 자동 재시작                       |
+| 배포(Deployment)                    | systemd 서비스                                | crash 시 자동 재시작                       |
 
 # 상세 설명
 
@@ -76,33 +76,33 @@
 <p align="center">
   <img src="beproof.png" width="1500"/>
   <br>
-  <em>예시 API 엔드포인트와 Swagger 문서 스크린샷</em>
+  <em>예시 API 엔드포인트(Endpoint)와 Swagger 문서 스크린샷</em>
 </p>
 
-**FastAPI**가 핵심 백엔드이며, 간소화된 도메인 주도 설계(DDD) 구조를 따릅니다. 요청은 **Pydantic**으로 검증 → **application → domain → infrastructure** 계층을 비동기로 거쳐 처리되고, 적절한 예외 처리 후 응답을 반환합니다.
+**FastAPI**가 핵심 백엔드이며, 간소화된 도메인 주도 설계(DDD) 구조를 따릅니다. 요청(request)은 **Pydantic**으로 검증 → **application → domain → infrastructure** 계층을 비동기로 거쳐 처리되고, 적절한 예외 처리 후 응답을 반환합니다.
 
-**MySQL**은 주요 DB로 사용되며, **SQLAlchemy async**로 비동기 접근합니다. 도메인 애그리게이트 상태는 여기에 영구 저장되며, 실시간 디바이스 텔레메트리보다 약간 지연된 “지연된 진실 공급원” 역할을 합니다.
+**MySQL**은 주요 DB로 사용되며, **SQLAlchemy async**로 비동기(async) 접근합니다. 도메인 애그리게이트(Domain aggregates)들은 여기에 영구 저장되며, 실시간 디바이스 텔레메트리(real source of truth)보다 약간 지연된 “지연된 진실 공급원(Delayed source of truth)” 역할을 합니다.
 
-**Mosquitto MQTT**는 엣지-클라우드 통신용 메시지 브로커로, 가볍고 안정적이며 메모리가 제한된 ESP32의 MicroPython에서도 완벽히 동작합니다.
+**Mosquitto MQTT**는 엣지-클라우드 통신용 메시지 브로커로, 가볍고 안정적이며 메모리가 제한된 ESP32의 MicroPython에서도 동작합니다.
 
 ## ERD
 
 <p align="center">
   <img src="ERD.png" width="900"/>
   <br>
-  <em>엔티티 관계 다이어그램</em>
+  <em>엔티티 관계 다이어그램(ERM)</em>
 </p>
 
-데이터베이스 스키마를 나타내며, 대부분 one-to-many 관계입니다.
+데이터베이스 스키마(Schema)를 나타내며, 대부분 one-to-many 관계입니다.
 
 <p align="center">
   <br>
   <img src="erd-proof.png" width="1000"/>
     <br>
-    <em>실제 운영 서버에서 실행한 SQL 쿼리 결과</em>
+    <em>실제 운영 서버에서 실행한 SQL 쿼리(query) 결과</em>
 </p>
 
-실제 운영 중인 VM에서 일시적으로 원격 DB 접근을 허용한 뒤, 로컬에서 SSL 터널링 후 실행한 `select * from water_tanks` 결과입니다.
+실제 운영 중인 VM에서 일시적으로 원격 DB 접근을 허용한 뒤, 로컬에서 SSL 터널링(tunneling) 후 실행한 `select * from water_tanks` 결과입니다.
 
 ## 프론트엔드
 <p align="center">
@@ -111,7 +111,7 @@
   <em>와이어프레임 → 코드 → 실제 동작</em> 
 </p>
 
-React Native (TypeScript)로 간단한 프론트엔드를 제작했으며, 독립형 안드로이드 앱으로 배포됩니다. 앱은 Ubuntu VM에 공개된 API 엔드포인트와 통신합니다.
+React Native (TypeScript)로 간단한 프론트엔드를 제작했으며, 독립형 안드로이드 앱으로 배포됩니다. 앱은 Ubuntu VM에 공개된 API 엔드포인트(Endpoint)와 통신합니다.
 
 ## 엣지 디바이스
 <p align="center">
@@ -127,7 +127,7 @@ React Native (TypeScript)로 간단한 프론트엔드를 제작했으며, 독�
 
 모든 엣지 디바이스는 중앙 Mosquitto 브로커와만 통신합니다. (현재는 연결 관리를 단순하게 유지하기 위함)
 
-엣지 ↔ Mosquitto 통신은 **MQTT over TLS**이며, Private CA와 개별 MQTT 클라이언트별 username/password를 사용합니다.
+엣지 ↔ Mosquitto 통신은 **MQTT over TLS**이며, 개인 CA, Private certified authority(Private CA, Dev machine에서 직접 만들었음)와 개별 MQTT 클라이언트별 username/password를 사용합니다.
 
 ## 배포 현황
 <p align="center">
@@ -136,11 +136,11 @@ React Native (TypeScript)로 간단한 프론트엔드를 제작했으며, 독�
     <em>sudo systemctl status ~.service 스크린샷</em>   
 </p>
 
-**도메인**은 DuckDNS로 운영 중입니다.
+**도메인 이름**은 DuckDNS에서 무료로 가져와 운영 중입니다.
 
-**서버**는 Vultr의 Ubuntu VM (월 ~7달러)에 호스팅되며, FastAPI 앱, MySQL, Mosquitto 브로커가 **systemd 서비스**로 데몬 실행 중입니다.
+**서버**는 Vultr의 Ubuntu VM (월 ~7달러)에 호스팅되며, FastAPI 앱, MySQL, Mosquitto 브로커가 **systemd**로 데몬 실행 중입니다.
 
-**Nginx**는 리버스 프록시 역할을 하며, IP당 30req/s 속도 제한, Let’s Encrypt HTTPS, 포트는 443(HTTPS)과 8883(MQTT over TLS)만 개방되어 있습니다.
+**Nginx**는 리버스 프록시(Reverse Proxy) 역할을 하며, IP당 30req/s 속도 제한, Let’s Encrypt HTTPS로  공인 CA(Public CA)사용, 포트는 443(HTTPS)과 8883(MQTT over TLS)만 개방되어 있습니다.
 
 # 백엔드 파일 구조
 ```
