@@ -60,18 +60,18 @@ There are three main parts:
 
 
 ## Stacks
-| Component              | Choice                                       | Reason                                    |
-| ---------------------- | -------------------------------------------- | ----------------------------------------- |
-| Hosting                | Vultr $7/month VM                            | Cheap, simple, reliable, static public IP |
-| Reverse proxy          | Nginx + Let’s Encrypt                        | HTTPS, rate limiting                      |
-| Open ports             | Only 443 (HTTPS) + 8883 (MQTT/TLS)           | Security and predictability               |
-| Backend                | FastAPI + async SQLAlchemy                   | Modern, fast, async, excellent auto docs  |
-| Architecture           | Clean-ish DDD layers                         | Easy to grow, readable                    |
-| Database               | MySQL                                        | Simple, good async python support         |
-| Message broker         | Mosquitto MQTT                               | Async Python/MicroPython support          |
-| Edge → Cloud security  | MQTT over TLS+ MQTT username/pw + private CA | Secure, lightweight, works on 500 KB RAM  |
-| Client → Cloudsecurity | JWT + HTTPS                                  | Basic auth using JWT token                |
-| Deployment             | systemd services                             | auto-restart on crash                     |
+| Component               | Choice                                       | Reason                                    |
+| ----------------------- | -------------------------------------------- | ----------------------------------------- |
+| Hosting                 | Vultr $7/month VM                            | Cheap, simple, reliable, static public IP |
+| Reverse proxy           | Nginx + Let’s Encrypt                        | HTTPS, rate limiting                      |
+| Open ports              | Only 443 (HTTPS) + 8883 (MQTT/TLS)           | Security and predictability               |
+| Backend                 | FastAPI + async SQLAlchemy                   | Modern, fast, async, excellent auto docs  |
+| Architecture            | Clean-ish DDD layers                         | Easy to grow, readable                    |
+| Database                | MySQL                                        | Simple, good async python support         |
+| Message broker          | Mosquitto MQTT                               | Async Python/MicroPython support          |
+| Edge → Cloud security   | MQTT over TLS+ MQTT username/pw + private CA | Secure, lightweight, works on 500 KB RAM  |
+| Client → Cloud security | JWT + HTTPS                                  | Basic auth using JWT token                |
+| Deployment              | systemd services                             | auto-restart on crash                     |
 
 # Details
 
