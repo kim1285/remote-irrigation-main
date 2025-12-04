@@ -30,9 +30,11 @@
 
 - Summary
 - Architecture
-- details
+- Details
 - File paths
+
 # Summary
+**Remote Irrigation** is an IoT platform that turns any normal water tank, valve, pump on a farm into a smart, internet-controllable asset.
 
 **Key Highlights**
 - Real microcontroller hardwares.
@@ -40,8 +42,9 @@
 - Survives power/Wi-Fi outages (auto reconnect + state recovery).
 - Secure end-to-end: HTTPS, JWT, MQTT over TLS with private CA.
 
-**Remote Irrigation** is an IoT platform that turns any normal water tank, valve, pump on a farm into a smart, internet-controllable asset. Users create accounts, provision physical devices (valves, pumps, level sensors) in seconds, and monitor/actuate everything live from an Android app — including simultaneous fill + drain operations. Edge nodes automatically survive multi-day Wi-Fi and power outages. Every connection is protected via JWT + TLS. Uses Async FastAPI + Async MQTT pipeline, < 3s real-time latency for all actuation operations, from anywhere in South Korea to any farm in South Korea. and tested on real hardwares for connection reliability.
-All firmware, backend, frontend, is built from scratch, and the server is live on Ubuntu VM on cloud, ready for users.
+Users create accounts, provision physical devices (valves, pumps, level sensors) in seconds, and monitor/actuate pump, valve tank live from an Android app — including simultaneous fill + drain operations. 
+
+All firmware, backend, frontend, is built from scratch, and the server is **live** on Ubuntu VM on cloud, ready for users.
 
 # Architecture
 <p align="center">
