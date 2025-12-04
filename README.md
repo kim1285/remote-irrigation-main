@@ -1,6 +1,6 @@
 
 <p align="center">
-  <a href="https://github.com/kim1285/remote-irrigation-main/blob/main/README_KOREAN.md">한국어도 있어요</a>
+  <a href="https://github.com/kim1285/remote-irrigation-main/blob/main/README_KOREAN.md"><strong>한국어도 있어요</strong></a>
 </p>
 
 <h1 align="center">Remote Irrigation</h1>
