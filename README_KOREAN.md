@@ -15,7 +15,7 @@
 - 🔐 HTTPS + JWT 기반 인증으로 안전한 통신
 - 🔄 전원/네트워크 단절 후 자동 재연결 및 상태 복구가 가능한 내결함성 엣지 디바이스
 
-# 데모 영상
+# 데모 영상 / 라이브 서버 doc 링크
 <p align="center">
   <a href="https://www.youtube.com/shorts/RhWYphY1hrE" target="_blank" rel="noopener">
     <img src="vid-link-thumb.png" alt="데모 보기" width="330"/>
@@ -23,6 +23,7 @@
   <br>
   <em>이미지를 클릭하면 데모 영상을 볼 수 있습니다.</em>
 </p>
+<p align="center"><a href="https://remote-irrigation.duckdns.org/docs#">Live server swagger doc</a></p>
 
 # 목차
 
