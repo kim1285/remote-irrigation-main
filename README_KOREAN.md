@@ -1,6 +1,6 @@
 <h1 align="center">원격 관개 시스템</h1>
 <p align="center">
-  <img src="videoframe_3483.png" width="500"/>
+  <img src="videoframe_3483.png" width="770"/>
     <p align="center"
     
   [![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04-E95420?logo=ubuntu&logoColor=white)](https://ubuntu.com/)
