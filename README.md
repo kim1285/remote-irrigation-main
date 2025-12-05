@@ -5,7 +5,7 @@
 
 <h1 align="center">Remote Irrigation</h1>
 <p align="center">
-  <img src="videoframe_3483.png" width="500"/>
+  <img src="videoframe_3483.png" width="770"/>
   <br>
   <p align="center"
     
