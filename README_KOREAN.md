@@ -1,6 +1,16 @@
 <h1 align="center">원격 관개 시스템</h1>
 <p align="center">
   <img src="videoframe_3483.png" width="500"/>
+    <p align="center"
+    
+  [![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04-E95420?logo=ubuntu&logoColor=white)](https://ubuntu.com/)
+  [![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+  [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+  [![MQTT](https://img.shields.io/badge/MQTT-v5-FFC20E?logo=mqtt&logoColor=black)](https://mqtt.org/)
+  [![MicroPython](https://img.shields.io/badge/MicroPython-v1.23-00A8E8?logo=python&logoColor=white)](https://micropython.org/)
+  [![Raspberry Pi](https://img.shields.io/badge/Raspberry_Pi-5-C51A4A?logo=raspberry-pi&logoColor=white)](https://www.raspberrypi.org/)
+  [![Stars](https://img.shields.io/github/stars/kim1285/remote-irrigation-main?style=social)](https://github.com/kim1285/remote-irrigation-main/stargazers)
+</p>
 </p>
 <p align="center">─────────</p>
 <p align="center"><strong>기존 설비를 그대로 두고도 사용할 수 있는 간단하고 안정적인 농업용 IoT 관개 플랫폼</strong></p>
@@ -18,10 +28,10 @@
 # 데모 영상 / 라이브 서버 doc 링크
 <p align="center">
   <a href="https://www.youtube.com/shorts/RhWYphY1hrE" target="_blank" rel="noopener">
-    <img src="vid-link-thumb.png" alt="데모 보기" width="330"/>
+    <img src="Untitled video - Made with Clipchamp.gif" alt="데모 보기" width="330"/>
   </a>
   <br>
-  <em>이미지를 클릭하면 데모 영상을 볼 수 있습니다.</em>
+  <em>gif 이미지를 클릭하면 데모 영상을 볼 수 있습니다.</em>
 </p>
 <p align="center"><a href="https://remote-irrigation.duckdns.org/docs#">Live server swagger doc</a></p>
 
