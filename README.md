@@ -6,10 +6,26 @@
 <h1 align="center">Remote Irrigation</h1>
 <p align="center">
   <img src="videoframe_3483.png" width="500"/>
+  <br>
+  <p align="center"
+    
+  [![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04-E95420?logo=ubuntu&logoColor=white)](https://ubuntu.com/)
+  [![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+  [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+  [![MQTT](https://img.shields.io/badge/MQTT-v5-FFC20E?logo=mqtt&logoColor=black)](https://mqtt.org/)
+  [![MicroPython](https://img.shields.io/badge/MicroPython-v1.23-00A8E8?logo=python&logoColor=white)](https://micropython.org/)
+  [![Raspberry Pi](https://img.shields.io/badge/Raspberry_Pi-5-C51A4A?logo=raspberry-pi&logoColor=white)](https://www.raspberrypi.org/)
+  [![Stars](https://img.shields.io/github/stars/kim1285/remote-irrigation-main?style=social)](https://github.com/kim1285/remote-irrigation-main/stargazers)
+</p>
 </p>
 <p align="center">─────────</p>
 <p align="center"><strong>A simple, reliable, IoT irrigation platform for farmers, without infrastructure overhaul</strong></p>
 <p align="center">─────────</p>
+
+# Remote Irrigation 🌱💧  
+Real-time remote irrigation control system using ESP32 + FastAPI + MQTT
+
+
 
 # Features
 
