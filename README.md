@@ -39,7 +39,7 @@ Real-time remote irrigation control system using ESP32 + FastAPI + MQTT
 # Demonstration Video / Live server
 <p align="center">
   <a href="https://www.youtube.com/shorts/RhWYphY1hrE" target="_blank" rel="noopener">
-    <img src="vid-link-thumb.png" alt="Watch demo" width="330"/>
+    <img src="Untitled video - Made with Clipchamp.gif" alt="Watch demo" width="330"/>
   </a>
   <br>
   <em>Click the image to see the demo video.</em>
