@@ -293,6 +293,7 @@ backend/
     main.py
 ```
 Thanks for reading!
+email: rlarkdtks8713@gmail.com
 
 
 
