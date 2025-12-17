@@ -342,4 +342,3 @@ backend/
                     └── sqlalchemy_valve_repository.py
     main.py
 ```
-읽어주셔서 감사합니다!! 
