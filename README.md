@@ -103,13 +103,56 @@ There are three main parts:
   <br>
   <em>Screenshot of an example API Endpoint, and swagger docs </em>
 </p>
+<br>
 
 **FastAPI** serves as the core backend application and follows a simplified Domain-Driven Design (DDD) structure with clean separation of concerns. Incoming requests are validated using **Pydantic**, then processed through the **application**, **domain**, and **infrastructure** layers asynchronously before returning responses with proper exception handling.
 
 **MySQL** is used as the primary database, accessed asynchronously via **SQLAlchemy (async extension)**. Domain aggregate states are stored persistently here — acting as a *delayed source of truth* compared to real-time device telemetry.
 
 **Mosquitto (MQTT)** is used as the message broker for edge-to-cloud communication due to its lightweight design, stability, and excellent support in MicroPython on ESP32 devices, even with limited memory (~500 KB).
+</p>
+<br>
+<br>
+<br>
 
+<p align="center">
+  <img src="remote-irrigation-c3-Page-1.drawio.png" width="1200"/>
+  <br>
+  <em>C3 diagram of FastAPI app overview</em>
+</p>
+<br>
+<br>
+<br>
+<br>
+<p align="center">
+  <img src="remote-irrigation-c3-Page-2.drawio.png" width="1200"/>
+  <br>
+  <em>C3 diagram of device provision request response flow</em>
+</p>
+At this time, admin will physically wire the sensor devices to clients existing hardware, and manually update esp32's device config.json, and after request response cycle, also again, update the uuid, psk of new device on the device config.json file.
+<br>
+<br>
+<br>
+<br>
+<p align="center">
+  <img src="remote-irrigation-c3-Page-3.drawio.png" width="1200"/>
+  <br>
+  <em>C3 diagram of device actuation status reading request response flow</em>
+</p>
+The flow is initiazted by a mobile frontend user button press. device status is persisted in MySQL and messages published and subscribed to between MQTT clients are routed via Mosquitto broker(separate service), and buffered in FastAPI's app_status object. Inside the flow, MQTT communication, DB communication is I/O process and MQTT communication has timeouts. In case of DB failure, DB will rollback using transaction scope. 
+<br>
+<br>
+<br>
+<p align="center">
+  <img src="remote-irrigation-c3-Page-4.drawio.png" width="1200"/>
+  <em>C3 diagram of esp32 initiated device status update flow</em>
+</p>
+The interval up device status update is configurable on esp32's config. This is background task in FastAPI is initialized by MQTT callback function.
+There is singleton MQTT callback function, and that callback function calls handler function routers. that router routes handler functions based on mqtt topic mappings using global dict object. Same design on ESP32 side, to make callback function lightweight, so it does not block the main async loop.
+On ESP32 side code.
+<br>
+<br>
+<br>
 
 ## ERD
 
