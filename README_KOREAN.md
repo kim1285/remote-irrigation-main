@@ -96,6 +96,52 @@
 **MySQL**은 주요 DB로 사용되며, **SQLAlchemy async**로 비동기(async) 접근합니다. 도메인 애그리게이트(Domain aggregates)들은 여기에 영구 저장되며, 실시간 디바이스 텔레메트리(real source of truth)보다 약간 지연된 “지연된 진실 공급원(Delayed source of truth)” 역할을 합니다.
 
 **Mosquitto MQTT**는 엣지-클라우드 통신용 메시지 브로커로, 가볍고 안정적이며 메모리가 제한된 ESP32의 MicroPython에서도 동작합니다.
+<br>
+<br>
+<br>
+
+<p align="center">
+  <img src="remote-irrigation-c3-Page-1.drawio.png" width="1200"/>
+  <br>
+  <em>C3 diagram of FastAPI app overview</em>
+</p>
+<br>
+<br>
+<br>
+<br>
+<p align="center">
+  <img src="remote-irrigation-c3-Page-2.drawio.png" width="1200"/>
+  <br>
+  <em>C3 diagram of device provision request response flow</em>
+</p>
+이 시점에 관리자는 센서 디바이스를 고객의 기존 하드웨어에 물리적으로 설치하고 배선합니다. 이후 ESP32의 `config.json`을 수동으로 업데이트합니다. 요청–응답 사이클이 완료되면, 동일한 `config.json` 파일에서 디바이스 UUID와 PSK를 다시 업데이트합니다.
+<br>
+<br>
+<br>
+<br>
+<p align="center">
+  <img src="remote-irrigation-c3-Page-3.drawio.png" width="1200"/>
+  <br>
+  <em>C3 diagram of device actuation status reading request response flow</em>
+</p>
+이 flow는 mobile frontend에서의 user action으로 시작됩니다. Device status는 MySQL에 persisted되며, MQTT clients가 publish/subscribe하는 message들은 별도의 Mosquitto broker service를 통해 routing되고 FastAPI의 `app_status` object에 buffered됩니다.
+
+이 flow 내에서 MQTT communication과 database interaction은 모두 I/O-bound operation이며, MQTT communication에는 timeout이 적용됩니다. Database failure가 발생할 경우, transaction scope를 통해 변경 사항이 rollback됩니다.
+
+<br>
+<br>
+<br>
+<p align="center">
+  <img src="remote-irrigation-c3-Page-4.drawio.png" width="1200"/>
+  <em>C3 diagram of esp32 initiated device status update flow</em>
+</p>
+디바이스 상태 업데이트 주기는 ESP32의 configuration에서 설정 가능합니다. FastAPI 측에서는 이 로직이 MQTT callback에 의해 trigger되는 background task로 실행됩니다. 단일 global MQTT callback function을 사용하며, 이 function는 global dictionary에 정의된 MQTT topic mapping을 기준으로 handler router에 처리를 위임합니다. Router는 해당 topic에 맞는 handler function으로 dispatch합니다.
+
+동일한 설계가 ESP32 측에도 적용됩니다. MQTT callback은 최대한 lightweight하게 유지되며, message를 handler로 routing하는 역할만 수행하여 main async loop를 blocking하지 않도록 합니다.
+
+<br>
+<br>
+<br>
 
 ## ERD
 
