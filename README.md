@@ -352,7 +352,6 @@ backend/
                     └── sqlalchemy_valve_repository.py
     main.py
 ```
-Thanks for reading!
 
 ### Contact me
 Email: rlarkdtks8713@gmail.com
