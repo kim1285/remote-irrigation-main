@@ -129,7 +129,7 @@ There are three main parts:
   <br>
   <em>C3 diagram of device provision request response flow</em>
 </p>
-At this time, admin will physically wire the sensor devices to clients existing hardware, and manually update esp32's device config.json, and after request response cycle, also again, update the uuid, psk of new device on the device config.json file.
+At this time, the administrator physically installs and wires the sensor devices into the client’s existing hardware. The administrator then manually updates the ESP32’s config.json. After the request–response cycle completes, the administrator updates the device UUID and PSK in the same config.json file.
 <br>
 <br>
 <br>
@@ -139,7 +139,7 @@ At this time, admin will physically wire the sensor devices to clients existing 
   <br>
   <em>C3 diagram of device actuation status reading request response flow</em>
 </p>
-The flow is initiazted by a mobile frontend user button press. device status is persisted in MySQL and messages published and subscribed to between MQTT clients are routed via Mosquitto broker(separate service), and buffered in FastAPI's app_status object. Inside the flow, MQTT communication, DB communication is I/O process and MQTT communication has timeouts. In case of DB failure, DB will rollback using transaction scope. 
+The flow is initiated by a user action in the mobile frontend. Device status is persisted in MySQL, while messages published and subscribed to by MQTT clients are routed through a separate Mosquitto broker service and buffered in FastAPI’s app_status object. Within this flow, both MQTT and database interactions are I/O-bound operations, with MQTT communication subject to timeouts. In the event of a database failure, changes are rolled back using a transaction scope.
 <br>
 <br>
 <br>
@@ -147,9 +147,9 @@ The flow is initiazted by a mobile frontend user button press. device status is 
   <img src="remote-irrigation-c3-Page-4.drawio.png" width="1200"/>
   <em>C3 diagram of esp32 initiated device status update flow</em>
 </p>
-The interval up device status update is configurable on esp32's config. This is background task in FastAPI is initialized by MQTT callback function.
-There is singleton MQTT callback function, and that callback function calls handler function routers. that router routes handler functions based on mqtt topic mappings using global dict object. Same design on ESP32 side, to make callback function lightweight, so it does not block the main async loop.
-On ESP32 side code.
+The interval for device status updates is configurable in the ESP32’s configuration. On the FastAPI side, this runs as a background task triggered by an MQTT callback. A single, global MQTT callback function is used; it delegates processing to handler routers, which dispatch to specific handler functions based on MQTT topic mappings stored in a global dictionary.
+
+The same design is applied on the ESP32 side: the MQTT callback is kept lightweight and only routes messages to handlers, ensuring it does not block the main asynchronous loop.
 <br>
 <br>
 <br>
